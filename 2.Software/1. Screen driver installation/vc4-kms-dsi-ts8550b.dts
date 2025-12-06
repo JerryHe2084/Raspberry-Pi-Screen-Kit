@@ -1,0 +1,31 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+    
+    fragment@0  {
+        target = <&dsi1>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+            port {
+                mipi_out_panel: endpoint {
+                    remote-endpoint = <&mipi_in_panel>;
+                };
+            };
+
+            panel@0 {
+                compatible = "techstar,ts8550b", "sitronix,st7701";
+                reg = <0>;
+                reset-gpios = <&gpio 17 0>;    
+                port {
+                    mipi_in_panel: endpoint {
+                        remote-endpoint = <&mipi_out_panel>;
+                    };
+                };
+            };
+        };
+    };
+};

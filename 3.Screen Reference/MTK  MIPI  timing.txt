@@ -1,0 +1,28 @@
+MTK  MIPI  timing
+params->dsi.vertical_sync_active = 2;		// VS
+params->dsi.vertical_backporch = 12;		// VBP
+params->dsi.vertical_frontporch = 22;		// VFP
+
+params->dsi.horizontal_sync_active =2;	// HS
+params->dsi.horizontal_backporch =11;	// HBP
+params->dsi.horizontal_frontporch = 7;	// HFP
+
+params->dsi.PLL CLOCK =175;
+
+-------------------------------------------------------------------------
+
+Hactive = 480
+Vactive = 854
+VS = 2
+VBP = 12
+VFP = 22
+HS = 2
+HBP = 11
+HFP = 7
+帧率fps = 60Hz
+
+clock-frequency = (Hactive + HBP + HFP + HS) × (Vactive + VBP + VFP + VS) × fps
+	           = ( 480+11+7+2 ) x ( 854+12+22+2) x 60
+	           = 500 x 890 x 60
+	           = 26,700,000 Hz = 26.7M Hz
+	           = 26,700 kHz
